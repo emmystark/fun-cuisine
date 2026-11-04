@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fun Cuisine website
 
-## Getting Started
+The menu and ordering site for funcuisine.com.ng. Customers pick food, add it to their order and send it on WhatsApp. There is no database or payment on the site. Payment happens by transfer inside WhatsApp.
 
-First, run the development server:
+## Changing the menu
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Everything you can change is in one file: `src/data/site.ts`. Open it on GitHub, click the pencil icon to edit, make the change, then click "Commit changes". Vercel puts the new version live on its own within about a minute.
+
+A few rules for editing:
+
+- Keep the quote marks `"` around words.
+- Keep the commas at the end of lines.
+- Prices are plain numbers: write `12500`, not `"N12,500"` or `12,500`.
+
+### Change a price
+
+Find the item by its name. Under `options` each size has a price:
+
+```ts
+{ label: "Box of 6", price: 6000 }, // TODO price
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Change `6000` to the new price. When the price is real, delete `// TODO price` from the end of the line. To see which prices are still placeholders, search the file for `TODO price`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Add an item
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Put the photo in the `public/menu` folder. Use a simple name with dashes, like `coconut-cake.webp` (JPG is fine too).
+2. In `site.ts`, copy a whole item block, from its `{` down to its `},`, and paste it under the last item.
+3. Change the details:
+   - `slug`: the web address for the item, lowercase with dashes, for example `coconut-cake`. Every item needs a different one.
+   - `name`: what customers see.
+   - `category`: one of the names in the `categories` list near the top of the file. To add a new category, add it to that list too. The list order is the order on the menu.
+   - `description`: one or two short sentences.
+   - `image`: `"/menu/coconut-cake.webp"`
+   - `options`: one line per size, with its price.
+   - `leadTime`: for example `"Order 2 days ahead"`.
+   - `available`: `true`
 
-## Learn More
+### Mark an item sold out
 
-To learn more about Next.js, take a look at the following resources:
+Change `available: true` to `available: false` on that item. The site shows "Sold out today" and customers can't add it to an order. Change it back to `true` when it's available again.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Change the WhatsApp number
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+At the top of `site.ts`:
 
-## Deploy on Vercel
+```ts
+export const WHATSAPP_NUMBER = "2348000000000";
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Use the full international number with no `+`, no spaces and no leading 0. For example, 0803 123 4567 becomes `2348031234567`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The printed card has the number on it too. After you change the number, ask your developer to run `node scripts/make-print.mjs` to make a new card.
+
+### Other text
+
+The business name, tagline, about text, delivery areas, Instagram handle, delivery note and lead time note are all in the `business` section at the top of `site.ts`.
+
+## For developers
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build
+```
+
+- `NEXT_PUBLIC_SITE_URL` sets the base URL used in WhatsApp links and Open Graph tags. It defaults to `https://funcuisine.com.ng`.
+- `node scripts/process-images.mjs` converts photos in `images-raw/` into WebP files in `public/menu/`.
+- `node scripts/make-print.mjs` regenerates `print/funcuisine-qr.png` and `print/funcuisine-a5-card.pdf`.
+- WhatsApp preview cards come from `src/app/menu/[slug]/opengraph-image.tsx`. To change where a photo is cropped on its card, edit `focusY` in `src/lib/og.tsx`.
+# fun-cuisine
