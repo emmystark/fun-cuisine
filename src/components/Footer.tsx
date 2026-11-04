@@ -15,6 +15,7 @@ export function Footer() {
           <h2 className="font-display text-lg">Talk to us</h2>
           <ul className="mt-3 space-y-1">
             <li><a className="flex min-h-11 items-center hover:text-tomato" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener">WhatsApp +{WHATSAPP_NUMBER}</a></li>
+            <li><a className="flex min-h-11 items-center break-all hover:text-tomato" href={`mailto:${business.email}`}>{business.email}</a></li>
             <li><a className="flex min-h-11 items-center hover:text-tomato" href={`https://instagram.com/${business.instagram}`} target="_blank" rel="noopener">Instagram @{business.instagram}</a></li>
           </ul>
         </div>

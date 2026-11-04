@@ -14,6 +14,7 @@ export const business = {
     "Fun Cuisine is a small Lagos kitchen that does both the oven and the pot. One day it is trays of meat pie and doughnuts for an office, the next it is party jollof and turkey wings for a naming ceremony. Everything is made to order, so it reaches you fresh.",
   areasServed: ["Lekki", "Ajah", "Victoria Island", "Ikoyi", "Surulere", "Yaba"], // TODO confirm areas
   instagram: "funcuisine", // TODO real handle, no @
+  email: "order@funcuisine.com.ng",
   deliveryNote: "We deliver within Lagos. Delivery fee depends on your area and we confirm it on WhatsApp.",
   leadTimeNote: "Please order at least 48 hours ahead. Custom cakes need 5 days.",
 };

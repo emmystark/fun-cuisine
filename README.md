@@ -54,7 +54,7 @@ The printed card has the number on it too. After you change the number, ask your
 
 ### Other text
 
-The business name, tagline, about text, delivery areas, Instagram handle, delivery note and lead time note are all in the `business` section at the top of `site.ts`.
+The business name, tagline, about text, delivery areas, Instagram handle, contact email, delivery note and lead time note are all in the `business` section at the top of `site.ts`.
 
 ## For developers
 
