@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { business, menu } from "@/data/site";
-import { naira, plainNaira, startingPrice } from "@/lib/order";
 import { ItemOrder } from "@/components/ItemOrder";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -19,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = menu.find((m) => m.slug === slug);
   if (!item) return {};
   const title = `${item.name} | ${business.name}`;
-  const description = `From ${plainNaira(startingPrice(item))}. ${item.description} Order on WhatsApp.`;
+  const description = `${item.description} Order on WhatsApp.`;
   return {
     title: { absolute: title },
     description,
@@ -47,7 +46,6 @@ export default async function ItemPage({ params }: Props) {
         <div className="md:pt-4">
           <p className="text-sm font-semibold uppercase tracking-wider text-cocoa/75">{item.category}</p>
           <h1 className="mt-2 font-display text-4xl leading-tight md:text-5xl">{item.name}</h1>
-          <p className="mt-2 text-xl font-semibold text-tomato">From {naira(startingPrice(item))}</p>
           <p className="mt-4 text-lg text-cocoa/85">{item.description}</p>
           <ItemOrder item={item} />
           <p className="mt-6 border-t border-line pt-4 text-[15px] text-cocoa/75">
@@ -67,7 +65,6 @@ export default async function ItemPage({ params }: Props) {
                     <Image src={m.image} alt={m.name} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
                   </div>
                   <p className="mt-2 font-display text-lg group-hover:text-tomato">{m.name}</p>
-                  <p className="text-[15px] font-semibold text-tomato">From {naira(startingPrice(m))}</p>
                 </Link>
               </li>
             ))}

@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { categories, menu } from "@/data/site";
-import { naira, startingPrice } from "@/lib/order";
 import { CardAdd } from "./AddToCart";
 
 const idFor = (c: string) => `cat-${c.toLowerCase().replace(/\s+/g, "-")}`;
@@ -31,7 +30,7 @@ export function MenuSection() {
     <section id="menu" className="section-anchor" aria-labelledby="menu-title">
       <div className="mx-auto max-w-6xl px-4 pt-16 md:pt-24">
         <h2 id="menu-title" className="font-display text-4xl md:text-5xl">The menu</h2>
-        <p className="mt-3 max-w-xl text-lg text-cocoa/80">Prices are per box or tray. Pick a size, add it, and send the whole order on WhatsApp.</p>
+        <p className="mt-3 max-w-xl text-lg text-cocoa/80">Food, drinks and pastry. Pick a size, add it, and send the whole order on WhatsApp. We reply with your total.</p>
       </div>
 
       <div className="sticky top-16 z-20 mt-6 border-y border-line bg-cream">
@@ -72,10 +71,7 @@ export function MenuSection() {
                         <span className="absolute left-3 top-3 rounded-full bg-butter px-3 py-1 text-sm font-semibold">Sold out today</span>
                       )}
                     </div>
-                    <div className="mt-3 flex items-baseline justify-between gap-3">
-                      <h4 className="font-display text-xl group-hover:text-tomato">{item.name}</h4>
-                      <p className="shrink-0 font-semibold text-tomato">From {naira(startingPrice(item))}</p>
-                    </div>
+                    <h4 className="mt-3 font-display text-xl group-hover:text-tomato">{item.name}</h4>
                     <p className="mt-1 line-clamp-2 text-[15px] text-cocoa/75">{item.description}</p>
                   </Link>
                   <div className="mt-3">

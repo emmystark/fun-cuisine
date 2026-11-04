@@ -11,8 +11,8 @@ import "./globals.css";
 const youngSerif = Young_Serif({ weight: "400", subsets: ["latin"], variable: "--font-young-serif" });
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-figtree" });
 
-const title = `${business.name} | Cakes, pastries and party food in Lagos`;
-const description = "Meat pies, doughnuts, party jollof and custom cakes, made to order in Lagos. Order on WhatsApp.";
+const title = `${business.name} | Food, drinks and pastry in Lagos`;
+const description = "Party jollof, cocktails, meat pies and doughnuts, made to order in Lagos. Order on WhatsApp.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

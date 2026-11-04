@@ -44,7 +44,7 @@ for (const d of whisk) page.drawSvgPath(d, { x: startX, y: markTop, scale, borde
 page.drawCircle({ x: startX + 25.6 * scale, y: markTop - 22.8 * scale, size: 1.6 * scale, color: hex("#D6452A") });
 page.drawText(name, { x: startX + markW + gap, y: baseY, size: nameSize, font: serif, color: hex(cocoa) });
 
-center("Cakes, pastries and party food in Lagos", sansReg, 13, baseY - 30, hex("#6b5446"));
+center("Food, drinks and pastry in Lagos", sansReg, 13, baseY - 30, hex("#6b5446"));
 
 // QR on a white tile
 const qr = await doc.embedPng(qrPng);

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import type { MenuItem } from "@/data/site";
-import { naira } from "@/lib/order";
 import { useCart } from "./CartProvider";
 import { Stepper } from "./Stepper";
 
@@ -18,10 +17,9 @@ export function ItemOrder({ item }: { item: MenuItem }) {
         <legend className="field-label">Size</legend>
         <div className="mt-2 grid gap-2">
           {item.options.map((o, i) => (
-            <label key={o.label} className={`choice !justify-between px-4 ${option === i ? "choice-on" : ""}`}>
+            <label key={o} className={`choice !justify-start px-4 ${option === i ? "choice-on" : ""}`}>
               <input type="radio" name="size" className="sr-only" checked={option === i} onChange={() => setOption(i)} disabled={!item.available} />
-              <span>{o.label}</span>
-              <span className="font-semibold text-tomato">{naira(o.price)}</span>
+              <span>{o}</span>
             </label>
           ))}
         </div>
@@ -34,12 +32,12 @@ export function ItemOrder({ item }: { item: MenuItem }) {
             type="button"
             className="btn-primary flex-1"
             onClick={() => {
-              add({ slug: item.slug, name: item.name, option: opt.label, price: opt.price, image: item.image }, qty);
+              add({ slug: item.slug, name: item.name, option: opt, image: item.image }, qty);
               setQty(1);
               setOpen(true);
             }}
           >
-            Add to order &middot; {naira(opt.price * qty)}
+            Add to order
           </button>
         </div>
       ) : (

@@ -7,10 +7,10 @@ import { useCart } from "./CartProvider";
 import { Stepper } from "./Stepper";
 import { FulfilmentFields } from "./Fulfilment";
 import { business } from "@/data/site";
-import { buildOrderMessage, isoDaysFromNow, naira, newOrderId, whatsappLink } from "@/lib/order";
+import { buildOrderMessage, isoDaysFromNow, newOrderId, whatsappLink } from "@/lib/order";
 
 export function CartDrawer() {
-  const { lines, total, open, setOpen, setQty, remove, clear } = useCart();
+  const { lines, open, setOpen, setQty, remove, clear } = useCart();
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [mode, setMode] = useState<"pickup" | "delivery">("pickup");
@@ -82,13 +82,8 @@ export function CartDrawer() {
                   <li key={l.slug + l.option} className="flex gap-3 py-4">
                     <Image src={l.image} alt="" width={72} height={72} className="h-[72px] w-[72px] shrink-0 rounded-[12px] object-cover" />
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-start justify-between gap-2">
-                        <div>
-                          <p className="font-semibold leading-snug">{l.name}</p>
-                          <p className="text-sm text-cocoa/70">{l.option} &middot; {naira(l.price)}</p>
-                        </div>
-                        <p className="font-semibold tabular-nums text-tomato">{naira(l.price * l.qty)}</p>
-                      </div>
+                      <p className="font-semibold leading-snug">{l.name}</p>
+                      <p className="text-sm text-cocoa/75">{l.option}</p>
                       <div className="mt-2 flex items-center justify-between">
                         <Stepper value={l.qty} min={1} onChange={(n) => setQty(l.slug, l.option, n)} label={`Quantity of ${l.name}`} />
                         <button type="button" onClick={() => remove(l.slug, l.option)} className="min-h-11 px-2 text-sm font-medium underline underline-offset-4 hover:text-tomato">
@@ -99,11 +94,9 @@ export function CartDrawer() {
                   </li>
                 ))}
               </ul>
-              <div className="flex items-baseline justify-between border-t border-cocoa/20 py-4">
-                <span className="font-semibold">Total</span>
-                <span className="font-display text-2xl tabular-nums">{naira(total)}</span>
-              </div>
-              <p className="text-sm text-cocoa/70">Delivery fee is confirmed on WhatsApp. {business.leadTimeNote}</p>
+              <p className="border-t border-cocoa/20 pt-4 text-sm text-cocoa/75">
+                We reply on WhatsApp with your total, including delivery. {business.leadTimeNote}
+              </p>
 
               <form onSubmit={send} className="mt-6 space-y-4">
                 <h3 className="font-display text-xl">Your details</h3>

@@ -3,12 +3,11 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { CartLine } from "@/lib/order";
 
-const KEY = "funcuisine-cart-v1";
+const KEY = "funcuisine-cart-v2";
 
 type Cart = {
   lines: CartLine[];
   count: number;
-  total: number;
   open: boolean;
   setOpen: (o: boolean) => void;
   add: (line: Omit<CartLine, "qty">, qty?: number) => void;
@@ -79,7 +78,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     () => ({
       lines,
       count: lines.reduce((s, l) => s + l.qty, 0),
-      total: lines.reduce((s, l) => s + l.qty * l.price, 0),
       open,
       setOpen,
       add,

@@ -1,13 +1,4 @@
-import { SITE_URL, WHATSAPP_NUMBER, type MenuItem } from "@/data/site";
-
-const grouped = (n: number) => n.toLocaleString("en-US");
-
-/** For the website: ₦12,500 */
-export const naira = (n: number) => `₦${grouped(n)}`;
-/** For WhatsApp messages: N12,500 (the naira sign breaks on some older phones) */
-export const plainNaira = (n: number) => `N${grouped(n)}`;
-
-export const startingPrice = (item: MenuItem) => Math.min(...item.options.map((o) => o.price));
+import { SITE_URL, WHATSAPP_NUMBER } from "@/data/site";
 
 export const newOrderId = () => `FC${Math.floor(1000 + Math.random() * 9000)}`;
 
@@ -37,7 +28,6 @@ export type CartLine = {
   slug: string;
   name: string;
   option: string;
-  price: number;
   qty: number;
   image: string;
 };
@@ -55,10 +45,7 @@ export function buildOrderMessage(input: {
   fulfilment: Fulfilment;
   note?: string;
 }) {
-  const total = input.lines.reduce((s, l) => s + l.price * l.qty, 0);
-  const items = input.lines.map(
-    (l) => `${l.qty} x ${l.name} (${l.option}) : ${plainNaira(l.price * l.qty)}`,
-  );
+  const items = input.lines.map((l) => `${l.qty} x ${l.name} (${l.option})`);
   const details = [
     `Name: ${input.name.trim()}`,
     `Date needed: ${shortDate(input.date)}`,
@@ -71,8 +58,6 @@ export function buildOrderMessage(input: {
     `New order ${input.id}`,
     "",
     ...items,
-    "",
-    `Total: ${plainNaira(total)}`,
     "",
     ...details,
     "",

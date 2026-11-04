@@ -10,17 +10,20 @@ A few rules for editing:
 
 - Keep the quote marks `"` around words.
 - Keep the commas at the end of lines.
-- Prices are plain numbers: write `12500`, not `"N12,500"` or `12,500`.
 
-### Change a price
+### Prices
 
-Find the item by its name. Under `options` each size has a price:
+The site doesn't show prices. Customers send their order on WhatsApp, and you reply with the total.
+
+### Change the sizes on an item
+
+Find the item by its name. `options` lists the sizes customers can pick, each one in quote marks:
 
 ```ts
-{ label: "Box of 6", price: 6000 }, // TODO price
+options: ["Box of 6", "Box of 12"],
 ```
 
-Change `6000` to the new price. When the price is real, delete `// TODO price` from the end of the line. To see which prices are still placeholders, search the file for `TODO price`.
+Add, remove or rename sizes in that list. Every item needs at least one.
 
 ### Add an item
 
@@ -32,7 +35,7 @@ Change `6000` to the new price. When the price is real, delete `// TODO price` f
    - `category`: one of the names in the `categories` list near the top of the file. To add a new category, add it to that list too. The list order is the order on the menu.
    - `description`: one or two short sentences.
    - `image`: `"/menu/coconut-cake.webp"`
-   - `options`: one line per size, with its price.
+   - `options`: the sizes, for example `["Single glass", "Party batch, serves 10"]`.
    - `leadTime`: for example `"Order 2 days ahead"`.
    - `available`: `true`
 

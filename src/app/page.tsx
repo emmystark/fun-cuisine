@@ -6,7 +6,7 @@ import { CustomCakeForm } from "@/components/CustomCakeForm";
 const steps = [
   { n: "1", title: "Pick your food", body: "Choose sizes and how many. Everything goes into one order." },
   { n: "2", title: "Send it on WhatsApp", body: "Your order opens in WhatsApp, already written out. Just press send." },
-  { n: "3", title: "Confirm and pay", body: "We confirm the date and delivery fee, you pay by transfer, and we start cooking." },
+  { n: "3", title: "Confirm and pay", body: "We reply with your total and delivery fee. You pay by transfer, and we get to work." },
 ];
 
 export default function Home() {
@@ -17,10 +17,10 @@ export default function Home() {
         <div className="order-2 md:order-1">
           <p className="inline-block rounded-full bg-butter px-3 py-1 text-sm font-semibold">Made to order in Lagos</p>
           <h1 className="mt-4 font-display text-[2.6rem] leading-[1.05] md:text-6xl">
-            Pies, doughnuts and proper party jollof.
+            Party jollof, cocktails and fresh pastry.
           </h1>
           <p className="mt-5 max-w-md text-lg text-cocoa/80">
-            Order for your home, your office or your owambe. Pick what you want and send it straight to us on WhatsApp.
+            Food, drinks and pastry for your home, your office or your owambe. Pick what you want and send it straight to us on WhatsApp.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <a href="#menu" className="btn-primary">See the menu</a>

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import type { MenuItem } from "@/data/site";
-import { naira } from "@/lib/order";
 import { useCart } from "./CartProvider";
 
 /** Size picker plus Add button used on menu cards. */
@@ -26,21 +25,21 @@ export function CardAdd({ item }: { item: MenuItem }) {
           className="h-11 min-w-0 flex-1 rounded-full border border-line bg-white px-3 text-sm"
         >
           {item.options.map((o, i) => (
-            <option key={o.label} value={i}>{o.label} &middot; {naira(o.price)}</option>
+            <option key={o} value={i}>{o}</option>
           ))}
         </select>
       )}
       <button
         type="button"
         onClick={() => {
-          add({ slug: item.slug, name: item.name, option: opt.label, price: opt.price, image: item.image });
+          add({ slug: item.slug, name: item.name, option: opt, image: item.image });
           setAdded(true);
           setTimeout(() => setAdded(false), 1400);
         }}
         className={`h-11 shrink-0 rounded-full px-5 text-sm font-semibold text-white transition-colors ${
           added ? "bg-cocoa" : "bg-tomato hover:bg-[#bd3a21]"
         } ${item.options.length > 1 ? "" : "flex-1"}`}
-        aria-label={`Add ${item.name}, ${opt.label}, to order`}
+        aria-label={`Add ${item.name}, ${opt}, to order`}
       >
         {added ? "Added" : "Add"}
       </button>

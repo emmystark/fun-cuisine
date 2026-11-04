@@ -11,10 +11,14 @@ const focusY: Record<string, number> = {
   "/menu/pastry-box.webp": 0.45,
   "/menu/ring-doughnuts.webp": 0.4,
   "/menu/filled-doughnuts.webp": 0.4,
-  "/menu/chocolate-swiss-roll.webp": 0.6,
+  "/menu/chocolate-swiss-roll.webp": 0.45,
   "/menu/rice-and-chicken-plate.webp": 0.5,
   "/menu/party-jollof-rice.webp": 0.4,
   "/menu/grilled-turkey-wings.webp": 0.45,
+  "/menu/margarita.webp": 0.5,
+  "/menu/long-island-iced-tea.webp": 0.35,
+  "/menu/negroni.webp": 0.5,
+  "/menu/blue-lagoon.webp": 0.55,
 };
 
 async function cropPhoto(image: string, width: number, height: number) {
@@ -32,8 +36,8 @@ async function cropPhoto(image: string, width: number, height: number) {
 const fontFile = (pkg: string, file: string) =>
   readFile(path.join(process.cwd(), "node_modules", "@fontsource", pkg, "files", file));
 
-/** Photo across the whole card, with a cream bar at the bottom holding the name and price. */
-export async function renderOg({ image, title, price }: { image: string; title: string; price: string }) {
+/** Photo across the whole card, with a cream bar at the bottom holding the name and a short label. */
+export async function renderOg({ image, title, label }: { image: string; title: string; label: string }) {
   const BAR = 150;
   const photo = await cropPhoto(image, ogSize.width, ogSize.height - BAR);
   const src = `data:image/jpeg;base64,${photo.toString("base64")}`;
@@ -57,8 +61,8 @@ export async function renderOg({ image, title, price }: { image: string; title: 
             <div style={{ fontFamily: "Young Serif", fontSize: 54, lineHeight: 1.05 }}>{title}</div>
             <div style={{ fontFamily: "Figtree", fontSize: 26, marginTop: 6, opacity: 0.75 }}>Fun Cuisine &middot; funcuisine.com.ng</div>
           </div>
-          {price ? (
-            <div style={{ fontFamily: "Figtree", fontSize: 40, color: "#D6452A", display: "flex" }}>{price}</div>
+          {label ? (
+            <div style={{ fontFamily: "Figtree", fontSize: 36, color: "#D6452A", display: "flex" }}>{label}</div>
           ) : null}
         </div>
       </div>
