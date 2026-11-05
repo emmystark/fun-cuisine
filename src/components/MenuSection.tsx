@@ -33,7 +33,7 @@ export function MenuSection() {
         <p className="mt-3 max-w-xl text-lg text-cocoa/80">Food, drinks and pastry. Pick a size, add it, and send the whole order on WhatsApp. We reply with your total.</p>
       </div>
 
-      <div className="sticky top-16 z-20 mt-6 border-y border-line bg-cream">
+      <div className="sticky top-[109px] z-20 mt-6 border-y border-line bg-cream md:top-16">
         <nav className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-2" aria-label="Menu categories">
           {groups.map((g) => (
             <a
