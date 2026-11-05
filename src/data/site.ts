@@ -17,7 +17,20 @@ export const business = {
   email: "order@funcuisine.com.ng",
   deliveryNote: "We deliver within Lagos. Delivery fee depends on your area and we confirm it on WhatsApp.",
   leadTimeNote: "Please order at least 48 hours ahead. Custom cakes need 5 days.",
+  customOrderNote: "Custom cakes need at least 5 days. Other custom orders need at least 48 hours.",
 };
+
+// Edit these lists to change the dropdowns on the custom order form.
+// "Custom cake" is special: picking it shows the cake-only fields (tiers, flavour, text on cake, colours).
+export const CAKE_ORDER_TYPE = "Custom cake";
+export const customOrderTypes = [
+  CAKE_ORDER_TYPE,
+  "Party jollof tray",
+  "Pastry box",
+  "Drinks for an event",
+  "Something else",
+];
+export const occasions = ["Birthday", "Wedding", "Owambe", "Office event", "Anniversary", "Baby shower", "Graduation", "Other"];
 
 export type MenuItem = {
   slug: string;

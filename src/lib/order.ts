@@ -66,35 +66,50 @@ export function buildOrderMessage(input: {
   ].join("\n");
 }
 
-export type CustomCake = {
+export type CustomOrder = {
   name: string;
+  orderType: string;
   occasion: string;
-  size: string;
-  flavour: string;
-  tiers: string;
+  quantity: string;
+  details: string;
   date: string;
-  text: string;
-  colours: string;
   budget: string;
   fulfilment: Fulfilment;
+  // Only used when orderType is the cake type.
+  size?: string;
+  flavour?: string;
+  tiers?: string;
+  text?: string;
+  colours?: string;
 };
 
-export function buildCustomCakeMessage(id: string, c: CustomCake) {
-  const rows: [string, string][] = [
+export function buildCustomOrderMessage(id: string, c: CustomOrder, cakeType: string) {
+  const isCake = c.orderType === cakeType;
+  const rows: [string, string | undefined][] = [
     ["Name", c.name],
+    ["Order type", c.orderType],
     ["Occasion", c.occasion],
-    ["Cake size", c.size],
-    ["Flavour", c.flavour],
-    ["Tiers", c.tiers],
-    ["Date needed", shortDate(c.date)],
-    ["Text on the cake", c.text],
-    ["Colour theme", c.colours],
+    ["Quantity or size", c.quantity],
+    ["Date needed", c.date ? shortDate(c.date) : ""],
     ["Budget", c.budget],
   ];
+  if (isCake) {
+    rows.push(
+      ["Cake size", c.size],
+      ["Flavour", c.flavour],
+      ["Tiers", c.tiers],
+      ["Text on the cake", c.text],
+      ["Colour theme", c.colours],
+    );
+  }
   return [
-    `Custom cake request ${id}`,
+    `Custom order request ${id}`,
     "",
-    ...rows.filter(([, v]) => v.trim()).map(([k, v]) => `${k}: ${v.trim()}`),
+    ...rows.filter(([, v]) => v?.trim()).map(([k, v]) => `${k}: ${v!.trim()}`),
+    "",
+    "Details:",
+    c.details.trim() || "-",
+    "",
     fulfilmentLine(c.fulfilment),
     "",
     "I will send reference pictures next.",

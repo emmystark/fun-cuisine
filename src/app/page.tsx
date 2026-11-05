@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { business, menu, photos } from "@/data/site";
 import { MenuSection } from "@/components/MenuSection";
-import { CustomCakeForm } from "@/components/CustomCakeForm";
+import { CustomOrderForm } from "@/components/CustomOrderForm";
 
 const steps = [
   { n: "1", title: "Pick your food", body: "Choose sizes and how many. Everything goes into one order." },
@@ -17,14 +17,14 @@ export default function Home() {
         <div className="order-2 md:order-1">
           <p className="inline-block rounded-full bg-butter px-3 py-1 text-sm font-semibold">Made to order in Lagos</p>
           <h1 className="mt-4 font-display text-[2.6rem] leading-[1.05] md:text-6xl">
-            Party jollof, cocktails and fresh pastry.
+            Party jollof and fresh pastry for every occasion.
           </h1>
           <p className="mt-5 max-w-md text-lg text-cocoa/80">
             Food, drinks and pastry for your home, your office or your owambe. Pick what you want and send it straight to us on WhatsApp.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <a href="#menu" className="btn-primary">See the menu</a>
-            <a href="#custom" className="btn-secondary">Order a custom cake</a>
+            <a href="#custom" className="btn-secondary">Make a custom order</a>
           </div>
         </div>
         <div className="relative order-1 aspect-[4/3.4] overflow-hidden photo md:order-2">
@@ -45,16 +45,16 @@ export default function Home() {
       <section id="custom" className="section-anchor mt-24 border-y border-line bg-[#F6EBDC]" aria-labelledby="custom-title">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[0.9fr_1.1fr] md:py-24">
           <div>
-            <h2 id="custom-title" className="font-display text-4xl md:text-5xl">Custom cakes</h2>
+            <h2 id="custom-title" className="font-display text-4xl md:text-5xl">Custom orders</h2>
             <p className="mt-4 max-w-md text-lg text-cocoa/80">
-              Birthdays, weddings, a surprise for your person. Tell us what you have in mind and your budget, and we will work it out with you on WhatsApp.
+              Trays for your owambe, pastry for the office, drinks for your party, or a cake for someone special. Tell us what you need and your budget, and we will work it out with you on WhatsApp.
             </p>
-            <p className="mt-3 text-cocoa/70">Custom cakes need at least 5 days.</p>
+            <p className="mt-3 text-cocoa/70">{business.customOrderNote}</p>
             <div className="relative mt-8 hidden aspect-[4/5] overflow-hidden photo md:block">
               <Image src={photos.customOrders} alt="Slices of chocolate swiss roll with cream filling" fill sizes="440px" className="object-cover" />
             </div>
           </div>
-          <CustomCakeForm />
+          <CustomOrderForm />
         </div>
       </section>
 
@@ -80,7 +80,7 @@ export default function Home() {
         <div>
           <h2 id="about-title" className="font-display text-4xl md:text-5xl">From our kitchen</h2>
           <p className="mt-5 text-lg leading-relaxed text-cocoa/85">{business.about}</p>
-          <p className="mt-4 text-cocoa/75">{menu.length} things on the menu right now, and cakes made the way you want them.</p>
+          <p className="mt-4 text-cocoa/75">{menu.length} things on the menu right now, and custom orders made the way you want them.</p>
         </div>
       </section>
     </>
