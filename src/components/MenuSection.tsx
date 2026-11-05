@@ -56,9 +56,9 @@ export function MenuSection() {
             <h3 className="font-display text-2xl md:text-3xl">{g.name}</h3>
             <ul className="mt-5 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {g.items.map((item, i) => (
-                <li key={item.slug} className="flex flex-col">
+                <li key={item.slug} className="flex flex-col" data-reveal style={{ "--d": `${(i % 3) * 90}ms` } as React.CSSProperties}>
                   <Link href={`/menu/${item.slug}`} className="group block">
-                    <div className="relative aspect-[4/3] overflow-hidden photo bg-line">
+                    <div className="relative aspect-[4/3] overflow-hidden photo img-skel">
                       <Image
                         src={item.image}
                         alt={item.name}

@@ -14,23 +14,23 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 pb-4 pt-6 md:grid-cols-[1fr_1.1fr] md:gap-12 md:pt-14">
-        <div className="order-2 md:order-1">
-          <p className="inline-block rounded-full bg-butter px-3 py-1 text-sm font-semibold">Made to order in Lagos</p>
-          <h1 className="mt-4 font-display text-[2.6rem] leading-[1.05] md:text-6xl">
+        <div>
+          <p className="hero-anim inline-block rounded-full bg-butter px-3 py-1 text-sm font-semibold" style={{ "--d": "0ms" } as React.CSSProperties}>Made to order in Lagos</p>
+          <h1 className="hero-anim mt-4 font-display text-[2.6rem] leading-[1.05] md:text-6xl" style={{ "--d": "100ms" } as React.CSSProperties}>
             Party jollof and fresh pastry for every occasion.
           </h1>
-          <p className="mt-5 max-w-md text-lg text-cocoa/80">
+          <p className="hero-anim mt-5 max-w-md text-lg text-cocoa/80" style={{ "--d": "200ms" } as React.CSSProperties}>
             Food, drinks and pastry for your home, your office or your owambe. Pick what you want and send it straight to us on WhatsApp.
           </p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <div className="hero-anim mt-7 flex flex-col gap-3 sm:flex-row" style={{ "--d": "300ms" } as React.CSSProperties}>
             <a href="#menu" className="btn-primary">See the menu</a>
             <a href="#custom" className="btn-secondary">Make a custom order</a>
           </div>
         </div>
-        <div className="relative order-1 aspect-[4/3.4] overflow-hidden photo md:order-2">
+        <div className="hero-anim relative aspect-[4/3.4] overflow-hidden photo" style={{ "--d": "150ms" } as React.CSSProperties}>
           <Image
             src={photos.hero}
-            alt="Jollof rice, fried rice, fried plantain and chicken on a black plate"
+            alt="Party jollof rice, freshly served in a steel tray"
             fill
             priority
             sizes="(min-width: 768px) 560px, 100vw"
@@ -45,7 +45,7 @@ export default function Home() {
       <section id="custom" className="section-anchor mt-24 border-y border-line bg-[#F6EBDC]" aria-labelledby="custom-title">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[0.9fr_1.1fr] md:py-24">
           <div>
-            <h2 id="custom-title" className="font-display text-4xl md:text-5xl">Custom orders</h2>
+            <h2 id="custom-title" className="font-display text-4xl md:text-5xl" data-reveal>Custom orders</h2>
             <p className="mt-4 max-w-md text-lg text-cocoa/80">
               Trays for your owambe, pastry for the office, drinks for your party, or a cake for someone special. Tell us what you need and your budget, and we will work it out with you on WhatsApp.
             </p>
@@ -54,7 +54,7 @@ export default function Home() {
               <Image src={photos.customOrders} alt="Slices of chocolate swiss roll with cream filling" fill sizes="440px" className="object-cover" />
             </div>
           </div>
-          <CustomOrderForm />
+          <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties}><CustomOrderForm /></div>
         </div>
       </section>
 
@@ -63,7 +63,7 @@ export default function Home() {
         <h2 id="how-title" className="font-display text-3xl md:text-4xl">How ordering works</h2>
         <ol className="mt-8 grid gap-8 md:grid-cols-3">
           {steps.map((s) => (
-            <li key={s.n} className="border-t-2 border-cocoa pt-4">
+            <li key={s.n} className="border-t-2 border-cocoa pt-4" data-reveal style={{ "--d": `${Number(s.n) * 120}ms` } as React.CSSProperties}>
               <span className="font-display text-3xl text-tomato">{s.n}</span>
               <h3 className="mt-2 text-lg font-semibold">{s.title}</h3>
               <p className="mt-1 text-cocoa/75">{s.body}</p>
@@ -74,10 +74,10 @@ export default function Home() {
 
       {/* About */}
       <section id="about" className="section-anchor mx-auto grid max-w-6xl items-center gap-10 px-4 pb-20 md:grid-cols-2 md:pb-28" aria-labelledby="about-title">
-        <div className="relative aspect-[4/5] overflow-hidden photo md:aspect-[5/6]">
+        <div className="relative aspect-[4/5] overflow-hidden photo md:aspect-[5/6]" data-reveal>
           <Image src={photos.about} alt="Freshly baked meat pies packed in a box" fill sizes="(min-width: 768px) 560px, 100vw" className="object-cover" />
         </div>
-        <div>
+        <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>
           <h2 id="about-title" className="font-display text-4xl md:text-5xl">From our kitchen</h2>
           <p className="mt-5 text-lg leading-relaxed text-cocoa/85">{business.about}</p>
           <p className="mt-4 text-cocoa/75">{menu.length} things on the menu right now, and custom orders made the way you want them.</p>

@@ -6,6 +6,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
 import { MobileOrderBar } from "@/components/MobileOrderBar";
+import { Preloader } from "@/components/Preloader";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import "./globals.css";
 
 const youngSerif = Young_Serif({ weight: "400", subsets: ["latin"], variable: "--font-young-serif" });
@@ -27,7 +29,13 @@ export const viewport: Viewport = { themeColor: "#FBF4EA" };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-NG" className={`${youngSerif.variable} ${figtree.variable}`}>
+      <head>
+        {/* Marks the page as JS-enabled before first paint, so animated content starts hidden only when it can animate in. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body className="antialiased">
+        <Preloader />
+        <RevealOnScroll />
         <CartProvider>
           <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">
             Skip to content

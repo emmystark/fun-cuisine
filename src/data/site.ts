@@ -176,7 +176,7 @@ export const menu: MenuItem[] = [
 
 // Photos used outside the menu.
 export const photos = {
-  hero: "/menu/rice-and-chicken-plate.webp",
+  hero: "/menu/party-jollof-hero.webp",
   about: "/menu/meat-pie.webp",
   customOrders: "/menu/chocolate-swiss-roll.webp",
 };
