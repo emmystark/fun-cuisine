@@ -26,6 +26,7 @@ body {
   font-family: var(--font-figtree), system-ui, sans-serif;
   overflow-x: hidden;
 }
+html { overflow-x: clip; max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -73,7 +74,12 @@ body {
   select.field:focus { background-color: #fff; }
   select.field option { color: var(--cocoa); background: #fff; }
   textarea.field { resize: vertical; line-height: 1.5; }
-  input[type="date"].field { min-width: 0; }
+  input[type="date"].field {
+    min-width: 0; max-width: 100%; width: 100%;
+    -webkit-appearance: none; appearance: none;
+  }
+  /* Stop grid children from growing wider than their column on small phones. */
+  .grid > * { min-width: 0; max-width: 100%; }
   .choice {
     display: flex; align-items: center; justify-content: center; min-height: 48px;
     border: 1px solid var(--line); border-radius: 10px; background: #fff;
