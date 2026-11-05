@@ -24,8 +24,8 @@ body {
   background: var(--cream);
   color: var(--cocoa);
   font-family: var(--font-figtree), system-ui, sans-serif;
-  overflow-x: hidden;
 }
+/* Clip sideways overflow at the root. Not on body, so sticky headers keep working. */
 html { overflow-x: clip; max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {

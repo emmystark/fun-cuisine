@@ -13,8 +13,8 @@ const links = [
 export function Header() {
   const { count, setOpen } = useCart();
   return (
-    <>
-    <header className="sticky top-0 z-30 border-b border-line bg-cream">
+    <div className="sticky top-0 z-30 bg-cream">
+    <header className="border-b border-line bg-cream">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
         <Link href="/" className="flex min-h-11 items-center" aria-label="Fun Cuisine home">
           <Logo />
@@ -50,6 +50,6 @@ export function Header() {
           </Link>
         ))}
       </nav>
-    </>
+    </div>
   );
 }
