@@ -4,7 +4,7 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://funcuisine.com.ng";
 
 // WhatsApp number in international format, no plus sign, no spaces.
-export const WHATSAPP_NUMBER = "2348000000000"; // TODO real number
+export const WHATSAPP_NUMBER = "2348110995142"; // 08110995142 in international format
 
 export const business = {
   name: "Fun Cuisine",
@@ -13,7 +13,7 @@ export const business = {
   about:
     "Fun Cuisine is a small Lagos kitchen that does the pot, the oven and the bar. One day it is trays of meat pie and doughnuts for an office, the next it is party jollof, turkey wings and a round of cocktails for a birthday. Everything is made to order, so it reaches you fresh.",
   areasServed: ["Lekki", "Ajah", "Victoria Island", "Ikoyi", "Surulere", "Yaba"], // TODO confirm areas
-  instagram: "funcuisine", // TODO real handle, no @
+  instagram: "funcuisine.ng", // no @
   email: "order@funcuisine.com.ng",
   deliveryNote: "We deliver within Lagos. Delivery fee depends on your area and we confirm it on WhatsApp.",
   leadTimeNote: "Please order at least 48 hours ahead. Custom cakes need 5 days.",

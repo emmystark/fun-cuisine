@@ -48,7 +48,7 @@ Change `available: true` to `available: false` on that item. The site shows "Sol
 At the top of `site.ts`:
 
 ```ts
-export const WHATSAPP_NUMBER = "2348000000000";
+export const WHATSAPP_NUMBER = "2348110995142";
 ```
 
 Use the full international number with no `+`, no spaces and no leading 0. For example, 0803 123 4567 becomes `2348031234567`.
