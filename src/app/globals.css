@@ -34,27 +34,46 @@ body {
 
 @layer components {
   .btn-primary {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-height: 48px; padding: 0 1.5rem; border-radius: 999px;
-    background: var(--tomato); color: #fff; font-weight: 600;
-    transition: background-color .15s;
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 52px; padding: 0 1.75rem; border-radius: 999px;
+    background: linear-gradient(180deg, #E0543A 0%, var(--tomato) 100%); color: #fff;
+    font-weight: 700; letter-spacing: .01em;
+    box-shadow: 0 6px 16px -6px rgba(214, 69, 42, .55), inset 0 1px 0 rgba(255, 255, 255, .18);
+    transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
   }
-  .btn-primary:hover { background: #bd3a21; }
-  .btn-primary:disabled { opacity: .45; cursor: not-allowed; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 22px -8px rgba(214, 69, 42, .6), inset 0 1px 0 rgba(255, 255, 255, .18); filter: brightness(1.03); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
   .btn-secondary {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-height: 48px; padding: 0 1.5rem; border-radius: 999px;
-    border: 1.5px solid var(--cocoa); color: var(--cocoa); font-weight: 600;
-    background: transparent; transition: background-color .15s;
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 52px; padding: 0 1.75rem; border-radius: 999px;
+    border: 1.5px solid var(--cocoa); color: var(--cocoa); font-weight: 700;
+    background: rgba(255, 255, 255, .6); backdrop-filter: blur(4px);
+    transition: background-color .2s ease, color .2s ease, transform .15s ease, box-shadow .2s ease;
   }
-  .btn-secondary:hover { background: var(--line); }
-  .field-label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: .35rem; }
+  .btn-secondary:hover { background: var(--cocoa); color: var(--cream); transform: translateY(-1px); box-shadow: 0 8px 18px -10px rgba(58, 36, 24, .6); }
+  .btn-secondary:active { transform: translateY(0); }
+  .field-label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: .4rem; color: var(--cocoa); }
   .field {
-    display: block; width: 100%; min-height: 48px; padding: .65rem .9rem;
-    border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--cocoa);
-    font-size: 16px;
+    display: block; width: 100%; min-height: 50px; padding: .7rem 1rem;
+    border: 1.5px solid #E6D8C4; border-radius: 12px; background-color: #fff; color: var(--cocoa);
+    font-size: 16px; font-family: inherit;
+    box-shadow: 0 1px 2px rgba(58, 36, 24, .04);
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
   }
-  .field:focus { outline: 2px solid var(--tomato); outline-offset: 1px; border-color: transparent; }
+  .field::placeholder { color: rgba(58, 36, 24, .42); }
+  .field:hover { border-color: #D7C3A8; }
+  .field:focus { outline: none; border-color: var(--tomato); box-shadow: 0 0 0 4px rgba(214, 69, 42, .14); }
+  select.field {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    padding-right: 2.75rem; cursor: pointer; font-weight: 500;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5l6 6 6-6' fill='none' stroke='%233A2418' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center; background-size: 14px 9px;
+  }
+  select.field:focus { background-color: #fff; }
+  select.field option { color: var(--cocoa); background: #fff; }
+  textarea.field { resize: vertical; line-height: 1.5; }
+  input[type="date"].field { min-width: 0; }
   .choice {
     display: flex; align-items: center; justify-content: center; min-height: 48px;
     border: 1px solid var(--line); border-radius: 10px; background: #fff;
