@@ -4,7 +4,7 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://funcuisine.com.ng";
 
 // WhatsApp number in international format, no plus sign, no spaces.
-export const WHATSAPP_NUMBER = "2348110995142"; // 08110995142 in international format
+export const WHATSAPP_NUMBER = "2349030987132"; // 08110995142 in international format
 
 export const business = {
   name: "Fun Cuisine",
